@@ -22,7 +22,7 @@ const client = new HumeClient({
   apiKey: process.env.HUME_API_KEY!, // Load from environment variables
 });
 
-const initializeHumeConnection2 = async (clientWs: WebSocket) => {
+const initializeHumeConnection = async (clientWs: WebSocket) => {
   const humeSocket = await client.empathicVoice.chat.connect({
     configId: process.env.HUME_CONFIG_ID, // optional
   });
@@ -191,7 +191,7 @@ const handleClientConnection = (clientWs: WebSocket) => {
 
         case "init":
           console.log("Received init message from client", data);
-          humeSocket = await initializeHumeConnection2(clientWs);
+          humeSocket = await initializeHumeConnection(clientWs);
 
           // When socket is ready, flush any queued messages
           if (humeSocket && humeSocket.readyState === WebSocket.OPEN) {

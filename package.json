@@ -1,6 +1,6 @@
 {
   "name": "avr-sts-humeai",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "author": "Agent Voice Response <info@agentvoiceresponse.com>",
   "description": "HumeAI Speech-to-Speech service for Agent Voice Response",
   "main": "dist/index.js",
