@@ -142,7 +142,6 @@ const handleClientConnection = (clientWs) => {
           wsUrl += `&voice_id=${process.env.HUMEAI_VOICE_ID}`;
         }  
       }
-      console.log("Connecting to HumeAI WebSocket API with URL:", wsUrl);
       ws = new WebSocket(wsUrl);
 
       ws.on("open", () => {
