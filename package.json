@@ -1,6 +1,6 @@
 {
   "name": "avr-sts-humeai",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "author": "Agent Voice Response <info@agentvoiceresponse.com>",
   "description": "HumeAI Speech-to-Speech service for Agent Voice Response",
   "main": "index.js",
@@ -10,15 +10,24 @@
     "dc:build": "docker build --platform=linux/amd64 -t agentvoiceresponse/avr-sts-humeai:latest -t agentvoiceresponse/avr-sts-humeai:${npm_package_version} .",
     "dc:push": "docker push agentvoiceresponse/avr-sts-humeai:latest && docker push agentvoiceresponse/avr-sts-humeai:${npm_package_version}"
   },
-  "dependencies": {},
+  "dependencies": {
+    "ws": "^8.18.3",
+    "dotenv": "^17.2.3",
+    "@alexanderolsen/libsamplerate-js": "^2.1.2"
+  },
   "devDependencies": {
-    "nodemon": "^3.1.10"
+    "nodemon": "^3.1.11"
   },
   "contributors": [
     {
       "name": "Mirko Bertone",
       "email": "",
       "url": ""
+    },
+    {
+      "name": "Giuseppe Careri",
+      "email": "info@gcareri.com",
+      "url": "https://github.com/gcareri"
     }
   ]
 }

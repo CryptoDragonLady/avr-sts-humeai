@@ -21,7 +21,7 @@ To set up and run this project, you will need:
 
 ```bash
 git clone https://github.com/agentvoiceresponse/avr-sts-humeai.git
-cd avr-sts-HumeAI
+cd avr-sts-humeai
 ```
 
 ### 2. Install Dependencies
@@ -37,15 +37,22 @@ Create a `.env` file in the root of the project to store your API keys and confi
 ```bash
 HUMEAI_API_KEY=your_HumeAI_api_key
 PORT=6039
+# Optional: override defaults or use preconfigured resources
+HUMEAI_WS_URL=wss://api.hume.ai/v0/evi/chat
+HUMEAI_WELCOME_MESSAGE="Hello, how can I help you today?"
+HUMEAI_INSTRUCTIONS="You are a helpful assistant"
+HUMEAI_CONFIG_ID=
+HUMEAI_VOICE_ID=
+```
 ### 4. Running the Application
 
 Start the application by running the following command:
 
 ```bash
-node index.js
+npm run start:dev
 ```
 
-The server will start on the port defined in the environment variable (default: 6030).
+The server will start on the port defined in the environment variable (default: 6039).
 
 ## How It Works
 
@@ -79,8 +86,19 @@ This endpoint accepts an audio stream and returns a streamed audio response gene
 
 You can customize the application behavior using the following environment variables:
 
-- `HUMEAI_API_KEY`: Your HumeAI API key (required)
-- `PORT`: The port on which the server will listen (default: 6030)
+- `PORT`: The port on which the server will listen (default: 6039).
+- `HUMEAI_API_KEY`: Your HumeAI API key (required).
+
+With config
+- `HUMEAI_CONFIG_ID`: HumeAI config ID. When set, the server uses it instead of `HUMEAI_WELCOME_MESSAGE`/`HUMEAI_INSTRUCTIONS`/`HUMEAI_VOICE_ID`.
+
+Without config
+- `HUMEAI_WELCOME_MESSAGE`: Greeting sent to the assistant at session start (default: `Hello, how can I help you today?`).
+- `HUMEAI_INSTRUCTIONS`: System prompt used when no config ID is supplied (default: `You are a helpful assistant`).
+- `HUMEAI_VOICE_ID`: Optional voice ID used when `HUMEAI_CONFIG_ID` is not provided.
+
+Optional
+- `HUMEAI_WS_URL`: WebSocket endpoint for HumeAI (default: `wss://api.hume.ai/v0/evi/chat`).
 
 ## Error Handling
 
